@@ -1,0 +1,3 @@
+Z:/kpastula/szablon/szablon/cmake-build-debug/CMakeFiles/tsp.dir
+Z:/kpastula/szablon/szablon/cmake-build-debug/CMakeFiles/edit_cache.dir
+Z:/kpastula/szablon/szablon/cmake-build-debug/CMakeFiles/rebuild_cache.dir
