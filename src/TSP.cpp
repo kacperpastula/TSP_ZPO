@@ -24,6 +24,7 @@ std::ostream& operator<<(std::ostream& os, const CostMatrix& cm) {
  * @return The vector of consecutive vertex.
  */
 path_t StageState::get_path() {
+
     throw;  // TODO: Implement it!
 }
 
@@ -32,6 +33,7 @@ path_t StageState::get_path() {
  * @return Vector of minimum values in row.
  */
 std::vector<cost_t> CostMatrix::get_min_values_in_rows() const {
+    
     throw;  // TODO: Implement it!
 }
 
