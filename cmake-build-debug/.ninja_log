@@ -1,0 +1,10 @@
+# ninja log v5
+3	323	7857708413013112	CMakeFiles/tsp.dir/src/tsp_setup.cpp.obj	1a6bc9b94d6f8bc3
+6	718	7857708416919426	CMakeFiles/tsp.dir/main.cpp.obj	1cc4a81a5277c8c
+0	1032	7857708419888214	CMakeFiles/tsp.dir/src/TSP.cpp.obj	6ae731b79dc60847
+1055	1361	7857708423169536	tsp.exe	991e1f75dce851e0
+13	1025	7857710382744106	CMakeFiles/tsp.dir/src/TSP.cpp.obj	6ae731b79dc60847
+1042	1376	7857710386494811	tsp.exe	991e1f75dce851e0
+18	801	7857710973149270	CMakeFiles/tsp.dir/main.cpp.obj	1cc4a81a5277c8c
+16	1154	7857710976274201	CMakeFiles/tsp.dir/src/TSP.cpp.obj	6ae731b79dc60847
+1156	1666	7857710980493079	tsp.exe	991e1f75dce851e0
