@@ -167,6 +167,24 @@ cost_t CostMatrix::get_vertex_cost(std::size_t row, std::size_t col) const {
  * @return The coordinates of the next vertex.
  */
 NewVertex StageState::choose_new_vertex() {
+    cost_t max_cost = 0;
+    vertex_t max_vert;
+    CostMatrix m = get_matrix();
+    m.reduce_rows();
+    m.reduce_cols();
+    for(int i = 0; i < m.size(); ++i){
+        for(int j = 0; j < m.size(); ++j){
+            if (m[i][j] == 0){
+                if(m.get_vertex_cost(i,j) >= max_cost) {
+                    max_cost = m.get_vertex_cost(i,j);
+                    max_vert.row = i;
+                    max_vert.col = j;
+                }
+        }
+
+    }
+    }
+    return NewVertex(max_vert, max_cost);
     throw;  // TODO: Implement it!
 }
 
@@ -175,6 +193,7 @@ NewVertex StageState::choose_new_vertex() {
  * @param new_vertex
  */
 void StageState::update_cost_matrix(vertex_t new_vertex) {
+
     throw;  // TODO: Implement it!
 }
 
@@ -183,6 +202,10 @@ void StageState::update_cost_matrix(vertex_t new_vertex) {
  * @return The sum of reduced values.
  */
 cost_t StageState::reduce_cost_matrix() {
+    cost_t result = 0;
+    result += matrix_.reduce_rows();
+    result += matrix_.reduce_cols();
+    return result;
 
     throw;  // TODO: Implement it!
 }

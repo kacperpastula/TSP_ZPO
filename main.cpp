@@ -128,6 +128,14 @@ int main() {
     std::cout<<'\n'<<std::endl;
     std::cout<<cm_obj3.get_vertex_cost(4,2)<<std::endl;
 
+    CostMatrix cm_obj4(cm);
+    StageState ss(cm_obj4);
+    std::cout<<ss.reduce_cost_matrix()<<std::endl;
+    std::cout<<"\n new_vertex test"<<'\n'<<std::endl;
+    CostMatrix cm_obj5(cm);
+    StageState ss1(cm_obj5);
+    NewVertex new_vert = ss1.choose_new_vertex();
+    std::cout<<"wierzcholek: "<<new_vert.coordinates.row<<' '<<new_vert.coordinates.col<<"\n koszt: "<<new_vert.cost<<std::endl;
 
     tsp_solutions_t solutions = solve_tsp(cm);
 
@@ -138,6 +146,10 @@ int main() {
         }
         std::cout << "\n";
     }
-    //test
+    //test reduce_cost_matrix()
+
+
+
+
     return EXIT_SUCCESS;
 }
