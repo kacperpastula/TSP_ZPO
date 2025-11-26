@@ -137,16 +137,22 @@ int main() {
     NewVertex new_vert = ss1.choose_new_vertex();
     std::cout<<"wierzcholek: "<<new_vert.coordinates.row<<' '<<new_vert.coordinates.col<<"\n koszt: "<<new_vert.cost<<std::endl;
 
-    tsp_solutions_t solutions = solve_tsp(cm);
-
-    for (auto elem : solutions) {
-        std::cout << elem.lower_bound << " : ";
-        for (auto pelem : elem.path) {
-            std::cout << pelem << " ";
-        }
-        std::cout << "\n";
-    }
     //test reduce_cost_matrix()
+    CostMatrix cm_obj6(cm);
+    cm_obj6.reduce_rows();
+    cm_obj6.reduce_cols();
+    StageState ss2(cm_obj6);
+
+    NewVertex new_vert2 = ss2.choose_new_vertex();
+    ss2.update_cost_matrix(new_vert2.coordinates);
+    for (int row = 0; row < ss2.get_matrix().size(); ++row)
+    {
+        for (int col = 0; col < ss2.get_matrix().size(); ++col)
+        {
+            std::cout << ss2.get_matrix()[row][col] << ' ';
+        }
+        std::cout << '\n';
+    }
 
 
 

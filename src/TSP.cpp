@@ -175,7 +175,7 @@ NewVertex StageState::choose_new_vertex() {
     for(int i = 0; i < m.size(); ++i){
         for(int j = 0; j < m.size(); ++j){
             if (m[i][j] == 0){
-                if(m.get_vertex_cost(i,j) >= max_cost) {
+                if(m.get_vertex_cost(i,j) > max_cost) {
                     max_cost = m.get_vertex_cost(i,j);
                     max_vert.row = i;
                     max_vert.col = j;
@@ -194,7 +194,14 @@ NewVertex StageState::choose_new_vertex() {
  */
 void StageState::update_cost_matrix(vertex_t new_vertex) {
 
-    throw;  // TODO: Implement it!
+
+    matrix_[new_vertex.col][new_vertex.row] = INF;
+    for (int i = 0; i < matrix_.size(); ++i)
+    {
+        matrix_[new_vertex.row][i] = INF;
+        matrix_[i][new_vertex.col] = INF;
+    }
+    //throw;  // TODO: Implement it!
 }
 
 /**
