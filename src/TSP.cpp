@@ -54,21 +54,29 @@ path_t StageState::get_path() {
  * Get minimum values from each row and returns them.
  * @return Vector of minimum values in row.
  */
-std::vector<cost_t> CostMatrix::get_min_values_in_rows() const {
-    std::vector<cost_t> min_value_vector = {};
-    for (auto &row: matrix_) {
-        cost_t min_value = INF;
-        for (auto elem: row) {
-            if (elem < min_value) {
-                min_value = elem;
+std::vector<cost_t> CostMatrix::get_min_values_in_rows() const
+{
+    std::vector<cost_t> result;
+
+    for (size_t i = 0; i < matrix_.size(); ++i)
+    {
+        const std::vector<int>& row = matrix_[i];
+        cost_t min_val = row[0];
+
+        for (size_t col = 1; col < row.size(); ++col)
+        {
+            if (row[col] < min_val)
+            {
+                min_val = row[col];
+            }
+            if (min_val == INF)
+            {
+                min_val = 0;
             }
         }
-        if (min_value == INF) {
-            min_value = 0;
-        }
-        min_value_vector.push_back(min_value);
+        result.push_back(min_val);
     }
-    return min_value_vector;
+    return result;
 }
 
 /**
@@ -93,22 +101,32 @@ cost_t CostMatrix::reduce_rows() {
  * Get minimum values from each column and returns them.
  * @return Vector of minimum values in columns.
  */
-std::vector<cost_t> CostMatrix::get_min_values_in_cols() const {
-    std::vector<cost_t> min_value_vector = {};
-    for (int j = 0; j < matrix_[0].size(); j++) {
-        cost_t min_value = INF;
-        for (int i = 0; i < matrix_.size(); i++) {
-            if (matrix_[i][j] < min_value) {
-                min_value = matrix_[i][j];
+std::vector<cost_t> CostMatrix::get_min_values_in_cols() const
+{
+    std::vector<cost_t> min_values(matrix_.size());
+
+    for (int col = 0; col < matrix_.size(); ++col)
+    {
+        min_values[col] = matrix_[0][col];
+        if (min_values[col] == INF)
+        {
+        min_values[col] = 0;
+        }
+    }
+    for (int row = 1; row < matrix_.size(); ++row)
+    {
+        for (int col = 0; col < matrix_.size(); ++col)
+        {
+            if (matrix_[row][col] < min_values[col])
+            {
+                min_values[col] = matrix_[row][col];
             }
         }
-        if (min_value == INF) {
-            min_value = 0;
-        }
-        min_value_vector.push_back(min_value);
+
     }
-    return min_value_vector;
+    return min_values;
 }
+
 
 
 
