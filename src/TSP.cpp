@@ -103,26 +103,20 @@ cost_t CostMatrix::reduce_rows() {
  */
 std::vector<cost_t> CostMatrix::get_min_values_in_cols() const
 {
-    std::vector<cost_t> min_values(matrix_.size());
-
-    for (int col = 0; col < matrix_.size(); ++col)
-    {
-        min_values[col] = matrix_[0][col];
-        if (min_values[col] == INF)
-        {
-        min_values[col] = 0;
-        }
-    }
-    for (int row = 1; row < matrix_.size(); ++row)
-    {
-        for (int col = 0; col < matrix_.size(); ++col)
-        {
-            if (matrix_[row][col] < min_values[col])
+    std::vector<cost_t> min_values;
+    for (int i = 0; i < matrix_.size(); i++){
+        cost_t min_val = INF;
+        for (int j = 0; j < matrix_[0].size(); j++){
+            if (matrix_[j][i] < min_val)
             {
-                min_values[col] = matrix_[row][col];
+                min_val = matrix_[j][i];
             }
         }
-
+        if (min_val == INF)
+        {
+            min_val = 0;
+        }
+        min_values.push_back(min_val);
     }
     return min_values;
 }
@@ -227,6 +221,7 @@ void StageState::update_cost_matrix(vertex_t new_vertex) {
         matrix_[new_vertex.row][i] = INF;
         matrix_[i][new_vertex.col] = INF;
     }
+
 }
 
 /**
